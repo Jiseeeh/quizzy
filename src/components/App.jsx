@@ -3,6 +3,7 @@ import React from "react";
 import { RiseLoader } from "react-spinners";
 
 import Intro from "./Intro";
+import Quiz from "./Quiz";
 import shuffle from "../myShuffle";
 function App() {
   const [loading, setLoading] = React.useState(false);
@@ -13,7 +14,14 @@ function App() {
     loading: loading,
     size: 40,
   };
-  
+
+  const loadingCSS = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+  };
+
   const startQuizzy = async () => {
     try {
       setLoading(true);
@@ -44,10 +52,9 @@ function App() {
   return (
     <>
       {loading ? (
-        <RiseLoader {...loadingSettings} />
+        <RiseLoader {...loadingSettings} cssOverride={loadingCSS} />
       ) : isDoneFetching ? (
-        // <Quiz data={quiz} />
-        <h1>Done fetching</h1>
+        <Quiz />
       ) : (
         <Intro handleClick={startQuizzy} />
       )}
