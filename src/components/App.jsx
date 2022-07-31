@@ -33,11 +33,12 @@ function App() {
 
       setIsDoneFetching((prevValue) => !prevValue);
 
-      const quizzy = data.results.map((e) => {
+      const quizzy = data.results.map((e, index) => {
         const correctAnswer = e.correct_answer;
         const choices = [correctAnswer, ...e.incorrect_answers];
 
         return {
+          id: index,
           question: e.question,
           correctAnswer,
           choices: shuffle(choices),
