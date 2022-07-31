@@ -1,3 +1,4 @@
+import "./Intro.css";
 export default function Intro(props) {
   return (
     <section className="intro">
