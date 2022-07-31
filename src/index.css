@@ -12,6 +12,8 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   height: 100vh;
+  background-color: #f5f7fb;
+  color: #293264;
 }
 
 #root {
