@@ -8,6 +8,7 @@ import shuffle from "../myShuffle";
 function App() {
   const [loading, setLoading] = React.useState(false);
   const [isDoneFetching, setIsDoneFetching] = React.useState(false);
+  const [quiz, setQuiz] = React.useState([]);
 
   const loadingSettings = {
     color: "#4D5B9E",
@@ -33,15 +34,18 @@ function App() {
       setIsDoneFetching((prevValue) => !prevValue);
 
       const quizzy = data.results.map((e) => {
-        const choices = [e.correct_answer, ...e.incorrect_answers];
+        const correctAnswer = e.correct_answer;
+        const choices = [correctAnswer, ...e.incorrect_answers];
+
         return {
           question: e.question,
-          correctAnswer: e.correct_answer,
+          correctAnswer,
           choices: shuffle(choices),
+          name: correctAnswer,
         };
       });
 
-      console.log(quizzy);
+      setQuiz(quizzy);
     } catch (err) {
       throw new Error(err);
     } finally {
@@ -54,7 +58,7 @@ function App() {
       {loading ? (
         <RiseLoader {...loadingSettings} cssOverride={loadingCSS} />
       ) : isDoneFetching ? (
-        <Quiz />
+        <Quiz data={quiz} />
       ) : (
         <Intro handleClick={startQuizzy} />
       )}
