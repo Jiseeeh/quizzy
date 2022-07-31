@@ -27,7 +27,7 @@ function App() {
     try {
       setLoading(true);
       const res = await fetch(
-        "https://opentdb.com/api.php?amount=5&difficulty=hard"
+        "https://opentdb.com/api.php?amount=5&difficulty=hard&type=multiple"
       );
       const data = await res.json();
 
