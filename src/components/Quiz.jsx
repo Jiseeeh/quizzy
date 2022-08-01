@@ -3,6 +3,8 @@ import { decode } from "html-entities";
 
 import "./Quiz.css";
 import bakayaro from "../assets/bakayaro.mp3";
+import tryAgain from "../assets/tryAgain.mp3";
+
 import Question from "./Question";
 import Choice from "./Choice";
 import Button from "./Button";
@@ -69,7 +71,11 @@ export default function Quiz(props) {
   };
 
   const playAgain = () => {
-    window.location.reload();
+    const audio = new Audio(tryAgain);
+    audio.volume = 1;
+    audio.play();
+
+    setInterval(() => window.location.reload(), 1500);
   };
 
   return (
