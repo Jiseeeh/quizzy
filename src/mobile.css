@@ -1,0 +1,11 @@
+@media screen and (max-width: 768px) {
+  .choices {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .choices label {
+    width: 100%;
+  }
+}
