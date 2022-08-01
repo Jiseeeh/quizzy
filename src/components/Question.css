@@ -1,0 +1,14 @@
+.question-container {
+  margin-bottom: 4rem;
+}
+
+.question-container h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 4rem;
+}
+
+.choices {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
