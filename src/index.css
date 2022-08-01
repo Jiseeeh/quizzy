@@ -19,3 +19,14 @@ body {
 #root {
   height: 100%;
 }
+
+button {
+  padding: 1.5rem 4rem 1.5rem;
+  font-size: clamp(1rem, 5vw, 2rem);
+  background-color: #4d5b9e;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  margin: 1rem;
+}
