@@ -1,8 +1,9 @@
 import React from "react";
-
+import { decode } from "html-entities";
 import Question from "./Question";
 import "./Quiz.css";
 import Choice from "./Choice";
+import Button from "./Button";
 
 export default function Quiz(props) {
   // stores the correct answers into an object.
@@ -14,7 +15,7 @@ export default function Quiz(props) {
   // map each questions and choices
   const questions = props.data.map((data) => {
     const choices = data.choices.map((choice, index) => {
-      return <Choice key={index} choice={choice} name={data.name} />;
+      return <Choice key={index} choice={decode(choice)} name={data.name} />;
     });
     return (
       <Question key={data.id} question={data.question} choices={choices} />
@@ -60,23 +61,22 @@ export default function Quiz(props) {
     });
   };
 
+  const playAgain = () => {
+    window.location.reload();
+  };
+
   return (
     <main className="quiz">
       {questions}
       {console.log(doneChecking, score)}
-      {doneChecking && <span>{`You scored ${score}/5!`}</span>}
-      {doneChecking ? (
-        <button
-          onClick={() => {
-            window.location.reload();
-          }}
-        >
-          {" "}
-          Play again!
-        </button>
-      ) : (
-        <button onClick={checkAnswers}>Show Answers</button>
-      )}
+      <section className="footer">
+        {doneChecking && <span>{`You scored ${score}/5!`}</span>}
+        {doneChecking ? (
+          <Button slot="Play Again!" onClick={playAgain} />
+        ) : (
+          <Button slot="Show Answers" onClick={checkAnswers} />
+        )}
+      </section>
     </main>
   );
 }
