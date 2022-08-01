@@ -1,6 +1,8 @@
 import React from "react";
 import { decode } from "html-entities";
 
+import "./Question.css";
+
 export default function Question(props) {
   return (
     <div className="question-container">
