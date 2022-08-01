@@ -1,7 +1,9 @@
 import React from "react";
 import { decode } from "html-entities";
-import Question from "./Question";
+
 import "./Quiz.css";
+import bakayaro from "../assets/bakayaro.mp3";
+import Question from "./Question";
 import Choice from "./Choice";
 import Button from "./Button";
 
@@ -58,6 +60,11 @@ export default function Quiz(props) {
       // disable inputs so that they can't be clicked again.
       input.disabled = true;
       setIsDoneChecking(true);
+
+      //play audio
+      const audio = new Audio(bakayaro);
+      audio.volume = 0.05;
+      audio.play();
     });
   };
 
@@ -68,7 +75,6 @@ export default function Quiz(props) {
   return (
     <main className="quiz">
       {questions}
-      {console.log(doneChecking, score)}
       <section className="footer">
         {doneChecking && <span>{`You scored ${score}/5!`}</span>}
         {doneChecking ? (
