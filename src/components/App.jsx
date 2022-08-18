@@ -4,6 +4,7 @@ import { RiseLoader } from "react-spinners";
 import Intro from "./Intro";
 import Quiz from "./Quiz";
 import shuffle from "../myShuffle";
+
 function App() {
   const [loading, setLoading] = React.useState(false);
   const [isDoneFetching, setIsDoneFetching] = React.useState(false);
